@@ -9,5 +9,4 @@ public class SuperGameApplication {
     public static void main(String[] args) {
         SpringApplication.run(SuperGameApplication.class, args);
     }
-
 }
