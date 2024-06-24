@@ -8,18 +8,18 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public abstract class Player {
-    private String name;
+    protected String name;
 
-    private int maxHp;
-    private int currentHp;
+    protected int maxHp;
+    protected int currentHp;
 
-    private int maxDemonBlood;
-    private int currentDemonBlood;
+    protected int maxDemonBlood;
+    protected int currentDemonBlood;
 
-    private int accuracy;
+    protected int accuracy;
 
-    // private Inventory inventory;
-    // private Spell[] spells;
+    // protected Inventory inventory;
+    // protected Spell[] spells;
 
-    // private MissionInventory missionInventory;
+    // protected MissionInventory missionInventory;
 }
