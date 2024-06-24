@@ -1,12 +1,14 @@
 package com.example.supergame;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public abstract class Enemy {
-    protected int name;
+    protected String name;
 
     protected int maxHp;
     protected int currentHp;
