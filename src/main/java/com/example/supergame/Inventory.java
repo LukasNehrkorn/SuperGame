@@ -1,20 +1,20 @@
 package com.example.supergame;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-@Table(name = "inventories")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Inventory {
     @Id
-    private Long id;
+    private int id;
 
-    private Long playerId;
+    private int playerId;
 
     // private Item items;
 
