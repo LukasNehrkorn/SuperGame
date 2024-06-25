@@ -8,6 +8,7 @@ import lombok.Setter;
 public class Demonblood extends Consumables{
 
     private int selfDamage;
+
     private int amount;
 
     Demonblood(String name, double price, int selfDamage, int amount) {

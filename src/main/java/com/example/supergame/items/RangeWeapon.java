@@ -9,8 +9,8 @@ import lombok.Setter;
 public class RangeWeapon extends Weapon{
 
     private int maxAmmunition;
-    private int ammunition;
 
+    private int ammunition;
 
     public RangeWeapon(String name, double price, double damage, double accuracy, WeaponType weaponType, int maxAmmunition, int ammunition) {
         super(name, price, damage, accuracy, weaponType);

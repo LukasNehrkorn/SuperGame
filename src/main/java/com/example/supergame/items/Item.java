@@ -7,6 +7,8 @@ import lombok.Data;
 @Builder
 
 public abstract class Item {
+
     private String name;
+
     private double price;
 }

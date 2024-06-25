@@ -10,8 +10,11 @@ import lombok.Setter;
 @Setter
 
 public abstract class Weapon extends Item {
+
     private double damage;
+
     private double accuracy;
+
     private WeaponType weaponType;
 
     public Weapon(String name, double price, double damage, double accuracy, WeaponType weaponType) {
