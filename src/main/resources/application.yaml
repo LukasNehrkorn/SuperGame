@@ -1,10 +1,10 @@
 spring:
   application:
-    name: WebApp
+    name: SuperGame
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/superGame_schema
+    url: jdbc:mysql://127.0.0.1:3306/supergame_schema
     username: root
-    password: password here
+    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
