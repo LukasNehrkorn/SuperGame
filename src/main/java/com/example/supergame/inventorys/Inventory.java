@@ -1,9 +1,12 @@
 package com.example.supergame.inventorys;
 
 import com.example.supergame.items.Item;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Builder
 public class Inventory {
 
@@ -12,4 +15,5 @@ public class Inventory {
     private Item[] items;
 
     private int money;
+
 }

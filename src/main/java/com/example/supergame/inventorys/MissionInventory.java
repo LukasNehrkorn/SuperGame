@@ -2,9 +2,12 @@ package com.example.supergame.inventorys;
 
 import com.example.supergame.items.MeleeWeapon;
 import com.example.supergame.items.RangeWeapon;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Builder
 public class MissionInventory {
 
@@ -19,4 +22,6 @@ public class MissionInventory {
     private int numOfDemonBloodPotions;
 
     private int moneyEarned;
+
+    private int ammunition;
 }

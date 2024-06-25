@@ -1,15 +1,21 @@
 package com.example.supergame.players;
 
+
 import com.example.supergame.inventorys.Inventory;
 import com.example.supergame.inventorys.MissionInventory;
 import com.example.supergame.spells.Spell;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Builder
-public abstract class Player {
+public class Player {
 
     private String name;
+
+    private Race race;
 
     private int maxHp;
 
@@ -21,9 +27,10 @@ public abstract class Player {
 
     private int accuracy;
 
-     private Inventory inventory;
+    private Inventory inventory;
 
-     private Spell[] spells;
+    private Spell[] spells;
 
-     private MissionInventory missionInventory;
+    private MissionInventory missionInventory;
+
 }
