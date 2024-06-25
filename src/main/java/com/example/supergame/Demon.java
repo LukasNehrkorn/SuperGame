@@ -1,12 +1,9 @@
 package com.example.supergame;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-public class Demon extends Player {
-    public Demon(String name, int maxHp, int currentHp, int maxDemonBlood, int currentDemonBlood, int accuracy ) {
-        super(name, maxHp, currentHp, maxDemonBlood, currentDemonBlood, accuracy);
+public class Demon extends Enemy {
+    public Demon(String name, int maxHp, int currentHp, int damage, int accuracy) {
+        super(name, maxHp, currentHp, damage, accuracy);
+
     }
 }
