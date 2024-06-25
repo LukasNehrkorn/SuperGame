@@ -1,7 +1,8 @@
 package com.example.supergame.players;
 
 import com.example.supergame.inventorys.Inventory;
-import com.example.supergame.inventorys.missionInventory.MissionInventory;
+import com.example.supergame.inventorys.MissionInventory;
+import com.example.supergame.spells.Spell;
 import lombok.*;
 
 @Data
@@ -21,7 +22,8 @@ public abstract class Player {
     private int accuracy;
 
      private Inventory inventory;
-//     private Spell[] spells;
+
+     private Spell[] spells;
 
      private MissionInventory missionInventory;
 }

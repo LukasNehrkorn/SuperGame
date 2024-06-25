@@ -1,9 +1,8 @@
-package com.example.supergame.inventorys.missionInventory;
+package com.example.supergame.inventorys;
 
 import com.example.supergame.items.MeleeWeapon;
 import com.example.supergame.items.RangeWeapon;
 import lombok.*;
-import org.w3c.dom.ranges.Range;
 
 @Data
 @Builder

@@ -7,8 +7,9 @@ import lombok.*;
 @Builder
 public class Inventory {
 
-
     private int playerId;
+
     private Item[] items;
+
     private int money;
 }
