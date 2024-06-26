@@ -1,12 +1,12 @@
 spring:
   application:
-    name: WebApp
+    name: SuperGame
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/supergame
+    url: jdbc:mysql://127.0.0.1:3306/supergame_schema
     username: root
-    password: Ja.Rz.321!
+    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
