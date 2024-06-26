@@ -1,4 +1,4 @@
-package com.example.supergame.items;
+package com.example.supergame.model.item;
 
 
 public abstract class Consumables extends Item{

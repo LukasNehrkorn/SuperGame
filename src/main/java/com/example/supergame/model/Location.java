@@ -1,4 +1,4 @@
-package com.example.supergame.locations;
+package com.example.supergame.model;
 
 import lombok.Builder;
 import lombok.Getter;

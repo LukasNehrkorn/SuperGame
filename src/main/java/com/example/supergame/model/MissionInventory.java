@@ -1,7 +1,7 @@
-package com.example.supergame.inventorys;
+package com.example.supergame.model;
 
-import com.example.supergame.items.MeleeWeapon;
-import com.example.supergame.items.RangeWeapon;
+import com.example.supergame.model.item.MeleeWeapon;
+import com.example.supergame.model.item.RangeWeapon;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

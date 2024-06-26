@@ -1,7 +1,6 @@
-package com.example.supergame.items;
+package com.example.supergame.model.item;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

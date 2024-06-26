@@ -1,6 +1,5 @@
-package com.example.supergame.enemys;
+package com.example.supergame.model;
 
-import com.example.supergame.inventorys.MissionInventory;
 import lombok.Getter;
 import lombok.Setter;
 
