@@ -1,6 +1,7 @@
 package com.example.supergame.controller;
 
-import com.example.supergame.model.Inventory;
+import com.example.supergame.model.database.Inventory;
+import com.example.supergame.model.database.MissionInventory;
 import com.example.supergame.model.Spell;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
@@ -28,7 +29,7 @@ public class PlayerController {
     @PostMapping("/")
     public void newPlayer(@RequestBody String playerInfoJSON) {
         Gson gson = new Gson();
-        PlayerInfo playerInfo = gson.fromJson(playerInfoJSON, PlayerInfo.class);
+        PlayerInfo playerInfo = gson.fromJson(playerInfoJSON, PlayerInfo.class); //TODO all params except id need to be not null
         playerService.createNewPlayer(playerInfo);
     }
 
@@ -71,12 +72,15 @@ public class PlayerController {
     }
 
     @PutMapping("/{id}/spells")
-    public void newPlayerSpell(@PathVariable String id, @RequestBody String spellJSON) {}
-
-    @DeleteMapping("/{id}/spells/{spellIndex}")
-    public void deletePlayerSpell(@PathVariable String id, @PathVariable int spellIndex) {}
+    public void newPlayerSpell(@PathVariable String id, @RequestBody String spellJSON) {
+        Gson gson = new Gson();
+        Spell spell = gson.fromJson(spellJSON, Spell.class); //TODO all params need to be not null
+        playerService.addSpell(id, spell);
+    }
 
     // ---- MISSION INVENTORY ----
     @GetMapping("/{id}/missionInventory/")
-    public void getPlayerMissionInventory(@PathVariable String id) {}
+    public MissionInventory getPlayerMissionInventory(@PathVariable String id) {
+        return playerService.getMissionInventory(id);
+    }
 }

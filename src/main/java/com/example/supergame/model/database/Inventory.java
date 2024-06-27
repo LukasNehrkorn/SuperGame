@@ -1,4 +1,4 @@
-package com.example.supergame.model;
+package com.example.supergame.model.database;
 
 import com.example.supergame.model.item.Item;
 import lombok.Getter;

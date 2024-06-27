@@ -1,6 +1,9 @@
 package com.example.supergame.service;
 
 import com.example.supergame.model.*;
+import com.example.supergame.model.database.Inventory;
+import com.example.supergame.model.database.MissionInventory;
+import com.example.supergame.model.database.Player;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import com.example.supergame.repository.PlayerRepository;
@@ -65,6 +68,12 @@ public class PlayerService {
 
     public void addSpell(String id, Spell spell) {
         Player player = repository.findById(id).get();
+        player.getSpells().add(spell);
+        repository.save(player);
+    }
 
+    // ---- MISSION INVENTORY ----
+    public MissionInventory getMissionInventory(String id) {
+        return repository.findById(id).get().getMissionInventory();
     }
 }

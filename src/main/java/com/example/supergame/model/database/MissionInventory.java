@@ -1,4 +1,4 @@
-package com.example.supergame.model;
+package com.example.supergame.model.database;
 
 import com.example.supergame.model.item.MeleeWeapon;
 import com.example.supergame.model.item.RangeWeapon;

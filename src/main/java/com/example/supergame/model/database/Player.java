@@ -1,5 +1,6 @@
-package com.example.supergame.model;
+package com.example.supergame.model.database;
 
+import com.example.supergame.model.*;
 import com.example.supergame.model.dto.PlayerInfo;
 import lombok.Getter;
 import lombok.Setter;
