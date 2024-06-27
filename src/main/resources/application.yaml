@@ -1,5 +1,5 @@
 spring:
   data:
     mongodb:
-      uri : mongodb+srv://niklaszimmermann:aKvWTw9c3EttrOfj@supermongo.zjjwzp8.mongodb.net/?retryWrites=true&w=majority&appName=SuperMongo
-      database : PlayerDB
+      uri: mongodb+srv://niklaszimmermann:aKvWTw9c3EttrOfj@supermongo.zjjwzp8.mongodb.net/?retryWrites=true&w=majority&appName=SuperMongo
+      database: PlayerDB

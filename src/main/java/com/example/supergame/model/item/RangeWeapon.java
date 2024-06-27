@@ -5,16 +5,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
-public class RangeWeapon extends Weapon{
+public class RangeWeapon extends Weapon {
 
     private int maxAmmunition;
 
-    private int ammunition;
+    private int ammunitionInWeapon;
 
-    public RangeWeapon(String name, double price, double damage, double accuracy, WeaponType weaponType, int maxAmmunition, int ammunition) {
-        super(name, price, damage, accuracy, weaponType);
+    public RangeWeapon(String name, double price, double damage, double accuracy, WeaponType weaponType, Rarity rarity, int maxAmmunition, int ammunition) {
+        super(name, price, damage, accuracy, weaponType, rarity);
         this.maxAmmunition = maxAmmunition;
-        this.ammunition = ammunition;
+        this.ammunitionInWeapon = ammunition;
     }
 }

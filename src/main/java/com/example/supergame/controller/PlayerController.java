@@ -36,7 +36,8 @@ public class PlayerController {
     public void updatePlayerInfo(@PathVariable String id, @RequestBody String playerInfoJSON) {
         Gson gson = new Gson();
         PlayerInfo playerInfo = gson.fromJson(playerInfoJSON, PlayerInfo.class);
-        if (!Objects.equals(id, playerInfo.getId())) throw new RuntimeException("PathVariable id and RequestBody id are not the same!");
+        if (!Objects.equals(id, playerInfo.getId()))
+            throw new RuntimeException("PathVariable id and RequestBody id are not the same!");
         playerService.updatePlayerInfo(playerInfo);
     }
 
@@ -71,12 +72,15 @@ public class PlayerController {
     }
 
     @PutMapping("/{id}/spells")
-    public void newPlayerSpell(@PathVariable String id, @RequestBody String spellJSON) {}
+    public void newPlayerSpell(@PathVariable String id, @RequestBody String spellJSON) {
+    }
 
     @DeleteMapping("/{id}/spells/{spellIndex}")
-    public void deletePlayerSpell(@PathVariable String id, @PathVariable int spellIndex) {}
+    public void deletePlayerSpell(@PathVariable String id, @PathVariable int spellIndex) {
+    }
 
     // ---- MISSION INVENTORY ----
     @GetMapping("/{id}/missionInventory/")
-    public void getPlayerMissionInventory(@PathVariable String id) {}
+    public void getPlayerMissionInventory(@PathVariable String id) {
+    }
 }

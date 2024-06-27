@@ -15,10 +15,13 @@ public abstract class Weapon extends Item {
 
     private WeaponType weaponType;
 
-    public Weapon(String name, double price, double damage, double accuracy, WeaponType weaponType) {
+    private Rarity rarity;
+
+    public Weapon(String name, double price, double damage, double accuracy, WeaponType weaponType, Rarity rarity) {
         super(name, price);
         this.damage = damage;
         this.accuracy = accuracy;
         this.weaponType = weaponType;
+        this.rarity = rarity;
     }
 }
