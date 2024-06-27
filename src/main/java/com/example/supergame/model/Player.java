@@ -1,15 +1,18 @@
 package com.example.supergame.model;
 
-
-import com.example.supergame.model.dto.NewPlayerData;
+import com.example.supergame.model.dto.PlayerInfo;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Document(collection = "Player")
 @Getter
 @Setter
 public class Player {
+
+    private String id;
 
     private String name;
 
@@ -29,7 +32,7 @@ public class Player {
 
     private Inventory inventory;
 
-    private Spell[] spells;
+    private List<Spell> spells;
 
     private MissionInventory missionInventory;
 
@@ -47,8 +50,8 @@ public class Player {
         this.missionInventory = null;
     }
 
-    public static Player createNewPlayer(NewPlayerData newPlayerRequestBody) {
-        return new Player(newPlayerRequestBody.getName(), newPlayerRequestBody.getRace(), newPlayerRequestBody.getJob());
+    public static Player createNewPlayer(PlayerInfo playerInfo) {
+        return new Player(playerInfo.getName(), Race.valueOf(playerInfo.getRace()), Job.valueOf(playerInfo.getJob()));
     }
 
 }
