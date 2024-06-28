@@ -1,7 +1,7 @@
-package com.example.supergame.model;
+package com.example.supergame.model.dto;
 
-import com.example.supergame.model.item.MeleeWeapon;
-import com.example.supergame.model.item.RangeWeapon;
+import com.example.supergame.model.dto.item.MeleeWeapon;
+import com.example.supergame.model.dto.item.RangeWeapon;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

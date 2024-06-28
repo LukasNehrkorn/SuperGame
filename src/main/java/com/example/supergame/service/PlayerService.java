@@ -1,8 +1,8 @@
 package com.example.supergame.service;
 
-import com.example.supergame.model.Job;
-import com.example.supergame.model.Race;
-import com.example.supergame.model.Spell;
+import com.example.supergame.model.enums.Job;
+import com.example.supergame.model.enums.Race;
+import com.example.supergame.model.dto.Spell;
 import com.example.supergame.model.database.Player;
 import com.example.supergame.model.database.SpellDetails;
 import com.example.supergame.model.database.SpellName;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class PlayerService {
@@ -42,7 +41,6 @@ public class PlayerService {
     }
 
     public PlayerInfo updatePlayerInfo(String id, PlayerInfo playerInfo) {
-        if (!Objects.equals(id, playerInfo.getId())) throw new RuntimeException("Id from path and id from playerInfo do not match");
         Player player = playerRepository.findById(playerInfo.getId()).get();
         player.setName(playerInfo.getName());
         if (playerInfo.getRace() != null) player.setRace(Race.valueOf(playerInfo.getRace()));

@@ -1,5 +1,4 @@
-package com.example.supergame.model.item;
-
+package com.example.supergame.model.dto.item;
 
 public enum WeaponType {
     PRIMARY,

@@ -1,6 +1,6 @@
 package com.example.supergame.controller;
 
-import com.example.supergame.model.Spell;
+import com.example.supergame.model.dto.Spell;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import com.example.supergame.service.PlayerService;
@@ -13,8 +13,12 @@ import java.util.List;
 @RequestMapping("/player")
 public class PlayerController {
 
+    private final PlayerService playerService;
+
     @Autowired
-    private PlayerService playerService;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     // ---- PLAYER INFO ----
     @GetMapping("/{id}")

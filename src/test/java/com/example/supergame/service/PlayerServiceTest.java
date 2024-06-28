@@ -1,6 +1,6 @@
 package com.example.supergame.service;
 
-import com.example.supergame.model.Spell;
+import com.example.supergame.model.dto.Spell;
 import com.example.supergame.model.database.Player;
 import com.example.supergame.model.database.SpellDetails;
 import com.example.supergame.model.database.SpellName;
