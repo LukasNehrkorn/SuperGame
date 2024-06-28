@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Builder
 public class Shop {
-     private RangeWeapon primaryWeapon;
-     private RangeWeapon secondaryWeapon;
-     private MeleeWeapon meleeWeapon;
+    private RangeWeapon primaryWeapon;
+    private RangeWeapon secondaryWeapon;
+    private MeleeWeapon meleeWeapon;
 }

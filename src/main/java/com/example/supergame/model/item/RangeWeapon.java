@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class RangeWeapon extends Weapon{
+public class RangeWeapon extends Weapon {
 
     private int maxAmmunition;
 

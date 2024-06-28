@@ -11,11 +11,11 @@ import lombok.*;
 @AllArgsConstructor
 public class MissionInventory {
 
-     private RangeWeapon primaryWeapon;
+    private RangeWeapon primaryWeapon;
 
-     private RangeWeapon secondaryWeapon;
+    private RangeWeapon secondaryWeapon;
 
-     private MeleeWeapon meleeWeapon;
+    private MeleeWeapon meleeWeapon;
 
     private int numOfHealingPotions;
 

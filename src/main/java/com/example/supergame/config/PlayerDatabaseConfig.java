@@ -11,13 +11,8 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackageClasses = {PlayerRepository.class, SpellNameRepository.class, SpellDetailsRepository.class} )
+@EnableMongoRepositories(basePackageClasses = {PlayerRepository.class, SpellNameRepository.class, SpellDetailsRepository.class})
 public class PlayerDatabaseConfig {
-
-    protected String getDatabaseName() {
-        return "PlayerDB";
-    }
-
     @Bean
     public MongoTemplate mongoTemplate() {
         String connectionString = "mongodb+srv://niklaszimmermann:aKvWTw9c3EttrOfj@supermongo.zjjwzp8.mongodb.net/?retryWrites=true&w=majority&appName=SuperMongo";

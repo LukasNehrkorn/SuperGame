@@ -1,6 +1,7 @@
 package com.example.supergame.model.database;
 
-import com.example.supergame.model.*;
+import com.example.supergame.model.Job;
+import com.example.supergame.model.Race;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import lombok.*;
@@ -40,20 +41,6 @@ public class Player {
 
     private MissionInventory missionInventory;
 
-    public Player(String name, Race race, Job job) {
-        this.name = name;
-        this.race = race;
-        this.job = job;
-        this.maxHp = 100;
-        this.currentHp = maxHp;
-        this.maxDemonBlood = 100;
-        this.currentDemonBlood = maxDemonBlood;
-        this.accuracy = 100;
-        this.inventory = new Inventory();
-        this.spells = null;
-        this.missionInventory = null;
-    }
-
     public Player(PlayerInfo info) {
         this.name = info.getName();
         this.race = Race.valueOf(info.getRace());
@@ -69,10 +56,10 @@ public class Player {
     }
 
     public PlayerInfo getPlayerInfo() {
-        return new PlayerInfo(id,name,race.toString(),job.toString());
+        return new PlayerInfo(id, name, race.toString(), job.toString());
     }
 
     public PlayerStatus getPlayerStatus() {
-        return new PlayerStatus(maxHp,currentHp,maxDemonBlood,currentDemonBlood,accuracy);
+        return new PlayerStatus(maxHp, currentHp, maxDemonBlood, currentDemonBlood, accuracy);
     }
 }

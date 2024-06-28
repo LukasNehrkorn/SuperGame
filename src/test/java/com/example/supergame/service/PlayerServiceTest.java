@@ -20,7 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
@@ -95,7 +95,7 @@ class PlayerServiceTest {
         when(playerRepository.findById(expectedPlayer.getId())).thenReturn(Optional.of(expectedPlayer));
         when(playerRepository.save(Mockito.any(Player.class))).thenReturn(expectedPlayer);
 
-        PlayerStatus actualPlayerStatus = service.updatePlayerStatus(expectedPlayer.getId(),expectedPlayer.getPlayerStatus());
+        PlayerStatus actualPlayerStatus = service.updatePlayerStatus(expectedPlayer.getId(), expectedPlayer.getPlayerStatus());
 
         assertEquals(actualPlayerStatus.getMaxHp(), expectedPlayer.getMaxHp());
         assertEquals(actualPlayerStatus.getCurrentHp(), expectedPlayer.getCurrentHp());

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class HealingPotion extends Consumables{
+public class HealingPotion extends Consumables {
 
     private int healing;
 
