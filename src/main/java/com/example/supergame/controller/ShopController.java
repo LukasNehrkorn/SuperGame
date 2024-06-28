@@ -1,11 +1,11 @@
 package com.example.supergame.controller;
 
 import com.example.supergame.model.database.Inventory;
-import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.dto.Shop;
+import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
-import com.example.supergame.model.dto.item.WeaponType;
+import com.example.supergame.model.enums.WeaponCategory;
 import com.example.supergame.service.ShopService;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,17 +26,17 @@ public class ShopController {
 
     @PutMapping("/buy/primaryWeapon")
     public RangeWeapon buyPrimaryWeapon() {
-        return (RangeWeapon) shopService.buyWeapon(WeaponType.PRIMARY);
+        return (RangeWeapon) shopService.buyWeapon(WeaponCategory.PRIMARY);
     }
 
     @PutMapping("/buy/secondaryWeapon")
     public RangeWeapon buySecondaryWeapon() {
-        return (RangeWeapon) shopService.buyWeapon(WeaponType.SECONDARY);
+        return (RangeWeapon) shopService.buyWeapon(WeaponCategory.SECONDARY);
     }
 
     @PutMapping("/buy/meeleWeapon")
     public MeleeWeapon buyMeleeWeapon() {
-        return (MeleeWeapon) shopService.buyWeapon(WeaponType.MELEE);
+        return (MeleeWeapon) shopService.buyWeapon(WeaponCategory.MELEE);
     }
 
     @PutMapping("/sell/")

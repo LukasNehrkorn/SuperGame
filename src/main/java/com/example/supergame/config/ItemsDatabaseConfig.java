@@ -1,6 +1,7 @@
 package com.example.supergame.config;
 
-import com.example.supergame.repository.*;
+import com.example.supergame.repository.ConsumablesRepository;
+import com.example.supergame.repository.WeaponRepository;
 import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackageClasses = {WeaponsRepository.class, ConsumablesRepository.class})
+@EnableMongoRepositories(basePackageClasses = {WeaponRepository.class, ConsumablesRepository.class})
 public class ItemsDatabaseConfig {
 
     protected String getDatabaseName() {

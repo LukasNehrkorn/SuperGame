@@ -1,14 +1,24 @@
 package com.example.supergame.model;
 
-import com.example.supergame.model.item.*;
 
+import com.example.supergame.model.dto.item.MeleeWeapon;
+import com.example.supergame.model.dto.item.RangeWeapon;
+import com.example.supergame.model.dto.item.Weapon;
+import com.example.supergame.model.enums.Rarity;
+import com.example.supergame.model.enums.WeaponCategory;
+import com.example.supergame.model.enums.WeaponType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WeaponFactory {
+
     //Selects the type of weapon
-    public Weapon createWeapon() {
-        int weaponTypeSelector = (int) (Math.random() * ((5 + 1)));
+    public Weapon createWeapon(List<Weapon> weaponList) {
+//        int weaponTypeSelector = (int) (Math.random() * ((5 + 1)));
+        int weaponTypeSelector = 1;
         if (weaponTypeSelector < 2) {
-            return createRandomMeleeWeapon();
+            return createRandomMeleeWeapon(weaponList);
         } else if (weaponTypeSelector < 4) {
             return createRandomRangeSecondaryWeapon();
         } else {
@@ -17,13 +27,12 @@ public class WeaponFactory {
     }
 
     //Creates a random melee weapon
-    public MeleeWeapon createRandomMeleeWeapon() {
-        MeleeWeapon meleeWeapon = new MeleeWeapon(null, 0, 0, 0, WeaponCategory.MELEE,
+    public MeleeWeapon createRandomMeleeWeapon(List<Weapon> weaponList) {
+        MeleeWeapon meleeWeapon = new MeleeWeapon(null, 0, 0, 100, WeaponCategory.MELEE,
                 raritySelection(), 0);
 
-
         setWeaponStats(meleeWeapon);
-        meleeWeapon.setAccuracy(100);
+        setWeaponName(meleeWeapon, weaponList);
         increaseDamageDependingOnWeaponType(meleeWeapon);
         return meleeWeapon;
     }
@@ -42,11 +51,37 @@ public class WeaponFactory {
     //Creates a random Primary Weapon
     public RangeWeapon createRandomRangePrimaryWeapon() {
         RangeWeapon primaryWeapon = new RangeWeapon(null, 0, 0, 0, WeaponCategory.PRIMARY,
-                raritySelection(), setPrimaryWeaponType(), 0, 0);
+                raritySelection(), setTypeForPrimaryWeapon(), 0, 0);
         setAmmunition(primaryWeapon);
         setWeaponStats(primaryWeapon);
         increaseDamageDependingOnWeaponType(primaryWeapon);
         return primaryWeapon;
+    }
+
+    //Set a Name for the Weapon
+    public void setWeaponName(Weapon weapon, List<Weapon> weaponList) {
+        List<String> weaponNames = new ArrayList<>();
+        if (weapon.getWeaponCategory().equals(WeaponCategory.MELEE)) {
+            for (Weapon weaponFromDB : weaponList) {
+                if (weaponFromDB.getWeaponCategory().equals(WeaponCategory.MELEE)) {
+                    weaponNames.add(weaponFromDB.getName());
+                }
+            }
+        } else if (weapon.getWeaponCategory().equals(WeaponCategory.SECONDARY)) {
+            for (Weapon weaponFromDB : weaponList) {
+                if (weaponFromDB.getWeaponCategory().equals(WeaponCategory.SECONDARY)) {
+                    weaponNames.add(weaponFromDB.getName());
+                }
+            }
+        } else if (weapon.getWeaponCategory().equals(WeaponCategory.PRIMARY)) {
+            for (Weapon weaponFromDB : weaponList) {
+                if (weaponFromDB.getWeaponCategory().equals(WeaponCategory.PRIMARY)) {
+                    weaponNames.add(weaponFromDB.getName());
+                }
+            }
+        }
+        int namePickNumber = (int) (Math.random() * (weaponNames.size()));
+        weapon.setName(weaponNames.get(namePickNumber));
     }
 
 
@@ -64,7 +99,7 @@ public class WeaponFactory {
 
     //Set Weapon type for Secondary Weapon
     public WeaponType setSecondaryWeaponType() {
-        int secondaryWeaponTypeSelector = (int) (Math.random() * ((3))+ 1);
+        int secondaryWeaponTypeSelector = (int) (Math.random() * ((3)) + 1);
         if (secondaryWeaponTypeSelector == 1) {
             return WeaponType.PISTOL;
         } else if (secondaryWeaponTypeSelector == 2) {
@@ -76,7 +111,7 @@ public class WeaponFactory {
     }
 
     //Set Weapon type for Primary Weapon
-    public WeaponType setPrimaryWeaponType() {
+    public WeaponType setTypeForPrimaryWeapon() {
         int primaryWeaponTypeSelector = (int) (Math.random() * ((4)) + 1);
         if (primaryWeaponTypeSelector == 1) {
             return WeaponType.ASSAULT_RIFLE;
@@ -141,18 +176,27 @@ public class WeaponFactory {
     }
 
     //Gives a damage increase depending on the weapon type
-    public void increaseDamageDependingOnWeaponType(Weapon weapon) {
+
+    /**
+     * This Method increases the Damage of a Weapon depending on the Weapon Type
+     * @param weapon weapon that get increased
+     */
+    public boolean increaseDamageDependingOnWeaponType(Weapon weapon) {
+        boolean success = false;
         if (weapon.getWeaponCategory().equals(WeaponCategory.MELEE)) {
             double newDamage = weapon.getDamage() / 0.4;
             weapon.setDamage(newDamage);
+            success = true;
         } else if (weapon.getWeaponCategory().equals(WeaponCategory.SECONDARY)) {
             double newDamage = weapon.getDamage() / 0.3;
             weapon.setDamage(newDamage);
+            success = true;
         } else if (weapon.getWeaponCategory().equals(WeaponCategory.PRIMARY)) {
             double newDamage = weapon.getDamage() / 0.2;
             weapon.setDamage(newDamage);
+            success = true;
         }
 
-
+        return success;
     }
 }

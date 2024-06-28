@@ -1,8 +1,8 @@
 package com.example.supergame.controller;
 
-import com.example.supergame.model.dto.Spell;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
+import com.example.supergame.model.dto.Spell;
 import com.example.supergame.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

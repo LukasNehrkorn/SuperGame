@@ -1,4 +1,4 @@
-package com.example.supergame.model.item;
+package com.example.supergame.model.enums;
 
 
 public enum WeaponCategory {

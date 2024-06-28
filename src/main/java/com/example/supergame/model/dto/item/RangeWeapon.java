@@ -1,5 +1,8 @@
-package com.example.supergame.model.item;
+package com.example.supergame.model.dto.item;
 
+import com.example.supergame.model.enums.Rarity;
+import com.example.supergame.model.enums.WeaponCategory;
+import com.example.supergame.model.enums.WeaponType;
 import lombok.Getter;
 import lombok.Setter;
 

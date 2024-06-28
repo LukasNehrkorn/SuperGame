@@ -1,4 +1,4 @@
-package com.example.supergame.model.item;
+package com.example.supergame.model.enums;
 
 public enum WeaponType {
     ASSAULT_RIFLE,
@@ -7,6 +7,5 @@ public enum WeaponType {
     SNIPER,
     SAWED_OFF_SHOTGUN,
     PISTOL,
-    REVOLVER,
-
+    REVOLVER
 }

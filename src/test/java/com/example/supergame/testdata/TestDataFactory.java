@@ -1,8 +1,8 @@
 package com.example.supergame.testdata;
 
+import com.example.supergame.model.database.*;
 import com.example.supergame.model.enums.Job;
 import com.example.supergame.model.enums.Race;
-import com.example.supergame.model.database.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
