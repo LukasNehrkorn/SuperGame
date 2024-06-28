@@ -1,18 +1,13 @@
 package com.example.supergame.controller;
 
-import com.example.supergame.model.database.Inventory;
-import com.example.supergame.model.database.MissionInventory;
 import com.example.supergame.model.Spell;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
-import com.example.supergame.model.dto.SpellId;
 import com.example.supergame.service.PlayerService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/player")

@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackageClasses = {PlayerRepository.class, SpellNameRepository.class, SpellDetailsRepository.class} )
+@EnableMongoRepositories(basePackageClasses = {PlayerRepository.class, SpellNameRepository.class, SpellDetailsRepository.class})
 public class PlayerDatabaseConfig {
 
     protected String getDatabaseName() {

@@ -3,8 +3,6 @@ package com.example.supergame.testdata;
 import com.example.supergame.model.Job;
 import com.example.supergame.model.Race;
 import com.example.supergame.model.database.*;
-import com.example.supergame.model.dto.PlayerInfo;
-import com.example.supergame.model.dto.PlayerStatus;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -18,6 +16,7 @@ public class TestDataFactory {
                 .spellName("Barrier of the shadows")
                 .build();
     }
+
     public SpellDetails getSpellDetails() {
         return SpellDetails.builder()
                 .id("667d5a103da5309d83b96ccd")
@@ -26,6 +25,7 @@ public class TestDataFactory {
                 .demonBloodCost(50)
                 .build();
     }
+
     public Player getPlayer() {
         List<String> spells = new ArrayList<>();
         spells.add("667d5a103da5309d83b96ccd");

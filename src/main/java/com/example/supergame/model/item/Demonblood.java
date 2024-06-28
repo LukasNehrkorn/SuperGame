@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Demonblood extends Consumables{
+public class Demonblood extends Consumables {
 
     private int selfDamage;
 

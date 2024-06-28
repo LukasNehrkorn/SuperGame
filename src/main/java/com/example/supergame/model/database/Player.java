@@ -1,6 +1,7 @@
 package com.example.supergame.model.database;
 
-import com.example.supergame.model.*;
+import com.example.supergame.model.Job;
+import com.example.supergame.model.Race;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import lombok.*;
@@ -69,10 +70,10 @@ public class Player {
     }
 
     public PlayerInfo getPlayerInfo() {
-        return new PlayerInfo(id,name,race.toString(),job.toString());
+        return new PlayerInfo(id, name, race.toString(), job.toString());
     }
 
     public PlayerStatus getPlayerStatus() {
-        return new PlayerStatus(maxHp,currentHp,maxDemonBlood,currentDemonBlood,accuracy);
+        return new PlayerStatus(maxHp, currentHp, maxDemonBlood, currentDemonBlood, accuracy);
     }
 }
