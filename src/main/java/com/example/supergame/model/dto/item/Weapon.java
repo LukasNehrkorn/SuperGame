@@ -15,7 +15,7 @@ public abstract class Weapon extends Item {
 
     private WeaponType weaponType;
 
-    public Weapon(String name, double price, double damage, double accuracy, WeaponType weaponType) {
+    public Weapon(String name, int price, double damage, double accuracy, WeaponType weaponType) {
         super(name, price);
         this.damage = damage;
         this.accuracy = accuracy;

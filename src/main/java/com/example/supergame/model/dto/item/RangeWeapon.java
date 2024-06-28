@@ -12,7 +12,7 @@ public class RangeWeapon extends Weapon {
 
     private int ammunition;
 
-    public RangeWeapon(String name, double price, double damage, double accuracy, WeaponType weaponType, int maxAmmunition, int ammunition) {
+    public RangeWeapon(String name, int price, double damage, double accuracy, WeaponType weaponType, int maxAmmunition, int ammunition) {
         super(name, price, damage, accuracy, weaponType);
         this.maxAmmunition = maxAmmunition;
         this.ammunition = ammunition;

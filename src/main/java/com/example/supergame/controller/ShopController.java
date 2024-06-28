@@ -24,23 +24,23 @@ public class ShopController {
         return shopService.getShop();
     }
 
-    @PutMapping("/buy/primaryWeapon")
-    public RangeWeapon buyPrimaryWeapon() {
-        return (RangeWeapon) shopService.buyWeapon(WeaponType.PRIMARY);
+    @PutMapping("/{playerId}/buy/primaryWeapon")
+    public RangeWeapon buyPrimaryWeapon(@PathVariable String playerId) {
+        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponType.PRIMARY);
     }
 
-    @PutMapping("/buy/secondaryWeapon")
-    public RangeWeapon buySecondaryWeapon() {
-        return (RangeWeapon) shopService.buyWeapon(WeaponType.SECONDARY);
+    @PutMapping("/{playerId}/buy/secondaryWeapon")
+    public RangeWeapon buySecondaryWeapon(@PathVariable String playerId) {
+        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponType.SECONDARY);
     }
 
-    @PutMapping("/buy/meeleWeapon")
-    public MeleeWeapon buyMeleeWeapon() {
-        return (MeleeWeapon) shopService.buyWeapon(WeaponType.MELEE);
+    @PutMapping("/{playerId}/buy/meeleWeapon")
+    public MeleeWeapon buyMeleeWeapon(@PathVariable String playerId) {
+        return (MeleeWeapon) shopService.buyWeapon(playerId, WeaponType.MELEE);
     }
 
-    @PutMapping("/sell/")
-    public Inventory sellItem(@RequestBody Item item) {
-        return shopService.sellItem(item);
+    @PutMapping("/{playerId}/sell/{index}")
+    public Inventory sellItem(@PathVariable String playerId, @PathVariable int index) {
+        return shopService.sellItem(playerId, index);
     }
 }
