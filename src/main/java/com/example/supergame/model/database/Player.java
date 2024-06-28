@@ -1,7 +1,7 @@
 package com.example.supergame.model.database;
 
-import com.example.supergame.model.Job;
-import com.example.supergame.model.Race;
+import com.example.supergame.model.enums.Job;
+import com.example.supergame.model.enums.Race;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import lombok.*;

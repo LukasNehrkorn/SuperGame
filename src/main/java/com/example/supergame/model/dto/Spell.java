@@ -1,4 +1,4 @@
-package com.example.supergame.model;
+package com.example.supergame.model.dto;
 
 import jakarta.persistence.Id;
 import lombok.Builder;

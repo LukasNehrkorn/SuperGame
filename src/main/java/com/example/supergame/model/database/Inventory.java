@@ -1,6 +1,6 @@
 package com.example.supergame.model.database;
 
-import com.example.supergame.model.item.Item;
+import com.example.supergame.model.dto.item.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

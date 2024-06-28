@@ -1,4 +1,4 @@
-package com.example.supergame.model;
+package com.example.supergame.model.enums;
 
 public enum Race {
     HUMAN,
