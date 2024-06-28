@@ -1,16 +1,13 @@
 package com.example.supergame.controller;
 
-import com.example.supergame.model.Inventory;
 import com.example.supergame.model.Spell;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import com.example.supergame.service.PlayerService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/player")
@@ -26,18 +23,13 @@ public class PlayerController {
     }
 
     @PostMapping("/")
-    public void newPlayer(@RequestBody String playerInfoJSON) {
-        Gson gson = new Gson();
-        PlayerInfo playerInfo = gson.fromJson(playerInfoJSON, PlayerInfo.class);
-        playerService.createNewPlayer(playerInfo);
+    public PlayerInfo newPlayer(@RequestBody PlayerInfo playerInfo) {
+        return playerService.createNewPlayer(playerInfo);
     }
 
     @PutMapping("/{id}")
-    public void updatePlayerInfo(@PathVariable String id, @RequestBody String playerInfoJSON) {
-        Gson gson = new Gson();
-        PlayerInfo playerInfo = gson.fromJson(playerInfoJSON, PlayerInfo.class);
-        if (!Objects.equals(id, playerInfo.getId())) throw new RuntimeException("PathVariable id and RequestBody id are not the same!");
-        playerService.updatePlayerInfo(playerInfo);
+    public PlayerInfo updatePlayerInfo(@PathVariable String id, @RequestBody PlayerInfo playerInfo) {
+        return playerService.updatePlayerInfo(id, playerInfo);
     }
 
     @DeleteMapping("/{id}")
@@ -52,16 +44,8 @@ public class PlayerController {
     }
 
     @PutMapping("/{id}/status")
-    public void updatePlayerStatus(@PathVariable String id, @RequestBody String playerStatusJSON) {
-        Gson gson = new Gson();
-        PlayerStatus playerStatus = gson.fromJson(playerStatusJSON, PlayerStatus.class);
+    public void updatePlayerStatus(@PathVariable String id, @RequestBody PlayerStatus playerStatus) {
         playerService.updatePlayerStatus(id, playerStatus);
-    }
-
-    // ---- INVENTORY ----
-    @GetMapping("/{id}/inventory/")
-    public Inventory getPlayerInventory(@PathVariable String id) {
-        return playerService.getInventory(id);
     }
 
     // ---- SPELLS ----
@@ -69,14 +53,4 @@ public class PlayerController {
     public List<Spell> getPlayerSpells(@PathVariable String id) {
         return playerService.getSpells(id);
     }
-
-    @PutMapping("/{id}/spells")
-    public void newPlayerSpell(@PathVariable String id, @RequestBody String spellJSON) {}
-
-    @DeleteMapping("/{id}/spells/{spellIndex}")
-    public void deletePlayerSpell(@PathVariable String id, @PathVariable int spellIndex) {}
-
-    // ---- MISSION INVENTORY ----
-    @GetMapping("/{id}/missionInventory/")
-    public void getPlayerMissionInventory(@PathVariable String id) {}
 }
