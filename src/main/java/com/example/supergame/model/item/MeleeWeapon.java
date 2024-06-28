@@ -9,8 +9,8 @@ public class MeleeWeapon extends Weapon {
 
     private double damageMultiplier;
 
-    public MeleeWeapon(String name, double price, double damage, double accuracy, WeaponType weaponType, Rarity rarity, double damageMultiplier) {
-        super(name, price, damage, accuracy, weaponType, rarity);
+    public MeleeWeapon(String name, double price, double damage, double accuracy, WeaponCategory weaponCategory, Rarity rarity, double damageMultiplier) {
+        super(name, price, damage, accuracy, weaponCategory, rarity);
         this.damageMultiplier = damageMultiplier;
     }
 }

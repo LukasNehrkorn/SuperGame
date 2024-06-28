@@ -1,8 +1,12 @@
 package com.example.supergame.model.item;
 
-
 public enum WeaponType {
-    PRIMARY,
-    SECONDARY,
-    MELEE;
+    ASSAULT_RIFLE,
+    BOLT_ACTION_RIFLE,
+    SHOTGUN,
+    SNIPER,
+    SAWED_OFF_SHOTGUN,
+    PISTOL,
+    REVOLVER,
+
 }

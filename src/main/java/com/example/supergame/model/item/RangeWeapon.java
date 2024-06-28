@@ -11,8 +11,12 @@ public class RangeWeapon extends Weapon {
 
     private int ammunitionInWeapon;
 
-    public RangeWeapon(String name, double price, double damage, double accuracy, WeaponType weaponType, Rarity rarity, int maxAmmunition, int ammunition) {
-        super(name, price, damage, accuracy, weaponType, rarity);
+    private WeaponType weaponType;
+
+    public RangeWeapon(String name, double price, double damage, double accuracy, WeaponCategory weaponCategory,
+                       Rarity rarity, WeaponType weaponType, int maxAmmunition, int ammunition) {
+        super(name, price, damage, accuracy, weaponCategory, rarity);
+        this.weaponType = weaponType;
         this.maxAmmunition = maxAmmunition;
         this.ammunitionInWeapon = ammunition;
     }
