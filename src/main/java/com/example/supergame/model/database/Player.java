@@ -2,15 +2,18 @@ package com.example.supergame.model.database;
 
 import com.example.supergame.model.*;
 import com.example.supergame.model.dto.PlayerInfo;
-import lombok.Getter;
-import lombok.Setter;
+import com.example.supergame.model.dto.PlayerStatus;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "Player")
+@Document(collection = "players")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Player {
 
     private String id;
@@ -33,11 +36,11 @@ public class Player {
 
     private Inventory inventory;
 
-    private List<Spell> spells;
+    private List<String> spells;
 
     private MissionInventory missionInventory;
 
-    private Player(String name, Race race, Job job) {
+    public Player(String name, Race race, Job job) {
         this.name = name;
         this.race = race;
         this.job = job;
@@ -51,8 +54,25 @@ public class Player {
         this.missionInventory = null;
     }
 
-    public static Player createNewPlayer(PlayerInfo playerInfo) {
-        return new Player(playerInfo.getName(), Race.valueOf(playerInfo.getRace()), Job.valueOf(playerInfo.getJob()));
+    public Player(PlayerInfo info) {
+        this.name = info.getName();
+        this.race = Race.valueOf(info.getRace());
+        this.job = Job.valueOf(info.getJob());
+        this.maxHp = 100;
+        this.currentHp = maxHp;
+        this.maxDemonBlood = 100;
+        this.currentDemonBlood = maxDemonBlood;
+        this.accuracy = 100;
+        this.inventory = new Inventory();
+        this.spells = null;
+        this.missionInventory = null;
     }
 
+    public PlayerInfo getPlayerInfo() {
+        return new PlayerInfo(id,name,race.toString(),job.toString());
+    }
+
+    public PlayerStatus getPlayerStatus() {
+        return new PlayerStatus(maxHp,currentHp,maxDemonBlood,currentDemonBlood,accuracy);
+    }
 }

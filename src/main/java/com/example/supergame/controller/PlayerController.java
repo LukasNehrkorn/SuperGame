@@ -5,6 +5,7 @@ import com.example.supergame.model.database.MissionInventory;
 import com.example.supergame.model.Spell;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
+import com.example.supergame.model.dto.SpellId;
 import com.example.supergame.service.PlayerService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,18 +28,13 @@ public class PlayerController {
     }
 
     @PostMapping("/")
-    public void newPlayer(@RequestBody String playerInfoJSON) {
-        Gson gson = new Gson();
-        PlayerInfo playerInfo = gson.fromJson(playerInfoJSON, PlayerInfo.class); //TODO all params except id need to be not null
-        playerService.createNewPlayer(playerInfo);
+    public PlayerInfo newPlayer(@RequestBody PlayerInfo playerInfo) {
+        return playerService.createNewPlayer(playerInfo);
     }
 
     @PutMapping("/{id}")
-    public void updatePlayerInfo(@PathVariable String id, @RequestBody String playerInfoJSON) {
-        Gson gson = new Gson();
-        PlayerInfo playerInfo = gson.fromJson(playerInfoJSON, PlayerInfo.class);
-        if (!Objects.equals(id, playerInfo.getId())) throw new RuntimeException("PathVariable id and RequestBody id are not the same!");
-        playerService.updatePlayerInfo(playerInfo);
+    public PlayerInfo updatePlayerInfo(@PathVariable String id, @RequestBody PlayerInfo playerInfo) {
+        return playerService.updatePlayerInfo(id, playerInfo);
     }
 
     @DeleteMapping("/{id}")
@@ -53,34 +49,13 @@ public class PlayerController {
     }
 
     @PutMapping("/{id}/status")
-    public void updatePlayerStatus(@PathVariable String id, @RequestBody String playerStatusJSON) {
-        Gson gson = new Gson();
-        PlayerStatus playerStatus = gson.fromJson(playerStatusJSON, PlayerStatus.class);
+    public void updatePlayerStatus(@PathVariable String id, @RequestBody PlayerStatus playerStatus) {
         playerService.updatePlayerStatus(id, playerStatus);
-    }
-
-    // ---- INVENTORY ----
-    @GetMapping("/{id}/inventory/")
-    public Inventory getPlayerInventory(@PathVariable String id) {
-        return playerService.getInventory(id);
     }
 
     // ---- SPELLS ----
     @GetMapping("/{id}/spells")
     public List<Spell> getPlayerSpells(@PathVariable String id) {
         return playerService.getSpells(id);
-    }
-
-    @PutMapping("/{id}/spells")
-    public void newPlayerSpell(@PathVariable String id, @RequestBody String spellJSON) {
-        Gson gson = new Gson();
-        Spell spell = gson.fromJson(spellJSON, Spell.class); //TODO all params need to be not null
-        playerService.addSpell(id, spell);
-    }
-
-    // ---- MISSION INVENTORY ----
-    @GetMapping("/{id}/missionInventory/")
-    public MissionInventory getPlayerMissionInventory(@PathVariable String id) {
-        return playerService.getMissionInventory(id);
     }
 }
