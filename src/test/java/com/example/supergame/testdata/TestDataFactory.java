@@ -2,11 +2,10 @@ package com.example.supergame.testdata;
 
 import com.example.supergame.model.dto.Shop;
 import com.example.supergame.model.dto.Spell;
+import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
-import com.example.supergame.model.dto.item.WeaponType;
-import com.example.supergame.model.enums.Job;
-import com.example.supergame.model.enums.Race;
+import com.example.supergame.model.enums.*;
 import com.example.supergame.model.database.*;
 import lombok.Getter;
 
@@ -53,23 +52,40 @@ public class TestDataFactory {
                 .build();
     }
 
+    public RangeWeapon getPrimaryWeapon() {
+        return new RangeWeapon("name", 200, 20, 50, WeaponCategory.PRIMARY, Rarity.COMMON, WeaponType.PISTOL, 100, 100);
+    }
+
+    public RangeWeapon getSecondaryWeapon() {
+        return new RangeWeapon("name", 200, 20, 50, WeaponCategory.SECONDARY, Rarity.COMMON, WeaponType.PISTOL, 100, 100);
+    }
+
+    public MeleeWeapon getMeleeWeapon() {
+        return new MeleeWeapon("name", 200, 20, 50, WeaponCategory.MELEE, Rarity.COMMON, 2);
+    }
+
     public Inventory getInventory() {
-        return new Inventory(new ArrayList<>(), 200);
+        List<Item> items = new ArrayList<>();
+        items.add(getPrimaryWeapon());
+        items.add(getSecondaryWeapon());
+        items.add(getMeleeWeapon());
+
+        return new Inventory(items, 200);
     }
 
     public Shop getCheapShop() {
         return Shop.builder()
-                .primaryWeapon(new RangeWeapon("name", 200, 20, 50, WeaponType.PRIMARY, 100, 100))
-                .secondaryWeapon(new RangeWeapon("name", 200, 20, 50, WeaponType.SECONDARY, 100, 100))
-                .meleeWeapon(new MeleeWeapon("name", 200, 20, 50, WeaponType.MELEE, 2))
+                .primaryWeapon(getPrimaryWeapon())
+                .secondaryWeapon(getSecondaryWeapon())
+                .meleeWeapon(getMeleeWeapon())
                 .build();
     }
 
     public Shop getExpensiveShop() {
         return Shop.builder()
-                .primaryWeapon(new RangeWeapon("name", 2000, 20, 50, WeaponType.PRIMARY, 100, 100))
-                .secondaryWeapon(new RangeWeapon("name", 2000, 20, 50, WeaponType.SECONDARY, 100, 100))
-                .meleeWeapon(new MeleeWeapon("name", 2000, 20, 50, WeaponType.MELEE, 2))
+                .primaryWeapon(new RangeWeapon("name", 2000, 20, 50, WeaponCategory.PRIMARY, Rarity.COMMON, WeaponType.PISTOL, 100, 100))
+                .secondaryWeapon(new RangeWeapon("name", 2000, 20, 50, WeaponCategory.SECONDARY, Rarity.COMMON, WeaponType.PISTOL, 100, 100))
+                .meleeWeapon(new MeleeWeapon("name", 2000, 20, 50, WeaponCategory.MELEE, Rarity.COMMON, 2))
                 .build();
     }
 }

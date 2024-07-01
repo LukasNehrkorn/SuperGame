@@ -1,11 +1,10 @@
 package com.example.supergame.controller;
 
 import com.example.supergame.model.database.Inventory;
-import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.dto.Shop;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
-import com.example.supergame.model.dto.item.WeaponType;
+import com.example.supergame.model.enums.WeaponCategory;
 import com.example.supergame.service.ShopService;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,17 +25,17 @@ public class ShopController {
 
     @PutMapping("/{playerId}/buy/primaryWeapon/")
     public RangeWeapon buyPrimaryWeapon(@PathVariable String playerId) {
-        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponType.PRIMARY);
+        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponCategory.PRIMARY);
     }
 
     @PutMapping("/{playerId}/buy/secondaryWeapon/")
     public RangeWeapon buySecondaryWeapon(@PathVariable String playerId) {
-        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponType.SECONDARY);
+        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponCategory.SECONDARY);
     }
 
     @PutMapping("/{playerId}/buy/meeleWeapon/")
     public MeleeWeapon buyMeleeWeapon(@PathVariable String playerId) {
-        return (MeleeWeapon) shopService.buyWeapon(playerId, WeaponType.MELEE);
+        return (MeleeWeapon) shopService.buyWeapon(playerId, WeaponCategory.MELEE);
     }
 
     @PutMapping("/{playerId}/sell/{index}/")
