@@ -22,6 +22,4 @@ public class WeaponController {
     public Weapon getPlayerInfo() {
         return weaponService.getRandomWeapon();
     }
-
-
 }
