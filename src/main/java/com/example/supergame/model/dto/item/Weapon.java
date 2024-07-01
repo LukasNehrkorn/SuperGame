@@ -8,7 +8,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public abstract class Weapon extends Item {
 
     private double damage;
