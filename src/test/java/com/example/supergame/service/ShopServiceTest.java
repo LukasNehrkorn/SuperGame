@@ -39,12 +39,6 @@ class ShopServiceTest {
     private PlayerRepository playerRepository;
 
     @Mock
-    private SpellNameRepository spellNameRepository;
-
-    @Mock
-    private SpellDetailsRepository spellDetailsRepository;
-
-    @Mock
     private WeaponNamesRepository weaponsRepository;
 
     @Mock
