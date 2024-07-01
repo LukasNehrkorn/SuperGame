@@ -8,9 +8,9 @@ import com.example.supergame.model.database.SpellDetails;
 import com.example.supergame.model.database.SpellName;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
-import com.example.supergame.repository.PlayerRepository;
-import com.example.supergame.repository.SpellDetailsRepository;
-import com.example.supergame.repository.SpellNameRepository;
+import com.example.supergame.repository.player.PlayerRepository;
+import com.example.supergame.repository.player.SpellDetailsRepository;
+import com.example.supergame.repository.player.SpellNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

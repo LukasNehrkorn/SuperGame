@@ -4,7 +4,7 @@ import com.example.supergame.model.database.Inventory;
 import com.example.supergame.model.database.Player;
 import com.example.supergame.model.dto.item.*;
 import com.example.supergame.model.dto.Shop;
-import com.example.supergame.repository.PlayerRepository;
+import com.example.supergame.repository.player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
