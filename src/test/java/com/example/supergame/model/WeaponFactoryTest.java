@@ -25,19 +25,6 @@ class WeaponFactoryTest {
     }
 
     @Test
-    void createRandomMeleeWeapon() {
-
-    }
-
-    @Test
-    void createRandomRangeSecondaryWeapon() {
-    }
-
-    @Test
-    void createRandomRangePrimaryWeapon() {
-    }
-
-    @Test
     void setWeaponNameForMeleeWeaponTest() {
         //given
         List<Weapon> expectedWeaponList = new ArrayList<>();
