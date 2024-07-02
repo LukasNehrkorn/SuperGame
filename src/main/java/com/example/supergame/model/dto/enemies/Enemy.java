@@ -1,14 +1,16 @@
-package com.example.supergame.model.dto;
+package com.example.supergame.model.dto.enemies;
 
 import com.example.supergame.model.database.MissionInventory;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public abstract class Enemy {
 
-    protected int name;
+    protected String name;
 
     protected int maxHp;
 
