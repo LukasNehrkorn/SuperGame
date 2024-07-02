@@ -16,7 +16,7 @@ public class RangeWeapon extends Weapon {
 
     private WeaponType weaponType;
 
-    public RangeWeapon(String name, double price, double damage, double accuracy, WeaponCategory weaponCategory,
+    public RangeWeapon(String name, int price, double damage, double accuracy, WeaponCategory weaponCategory,
                        Rarity rarity, WeaponType weaponType, int maxAmmunition, int ammunition) {
         super(name, price, damage, accuracy, weaponCategory, rarity);
         this.weaponType = weaponType;

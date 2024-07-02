@@ -1,4 +1,4 @@
-package com.example.supergame.repository;
+package com.example.supergame.repository.player;
 
 import com.example.supergame.model.database.SpellName;
 import org.springframework.data.mongodb.repository.MongoRepository;

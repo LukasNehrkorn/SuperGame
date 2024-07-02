@@ -7,5 +7,6 @@ public enum WeaponType {
     SNIPER,
     SAWED_OFF_SHOTGUN,
     PISTOL,
-    REVOLVER
+    REVOLVER,
+    MELEE
 }

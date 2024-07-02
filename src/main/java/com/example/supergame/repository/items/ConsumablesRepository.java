@@ -1,4 +1,4 @@
-package com.example.supergame.repository;
+package com.example.supergame.repository.items;
 
 import com.example.supergame.model.dto.item.Consumables;
 import org.springframework.data.mongodb.core.mapping.Document;

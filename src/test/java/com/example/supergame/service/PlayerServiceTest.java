@@ -1,14 +1,14 @@
 package com.example.supergame.service;
 
+import com.example.supergame.model.dto.Spell;
 import com.example.supergame.model.database.Player;
 import com.example.supergame.model.database.SpellDetails;
 import com.example.supergame.model.database.SpellName;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
-import com.example.supergame.model.dto.Spell;
-import com.example.supergame.repository.PlayerRepository;
-import com.example.supergame.repository.SpellDetailsRepository;
-import com.example.supergame.repository.SpellNameRepository;
+import com.example.supergame.repository.player.PlayerRepository;
+import com.example.supergame.repository.player.SpellDetailsRepository;
+import com.example.supergame.repository.player.SpellNameRepository;
 import com.example.supergame.testdata.TestDataFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

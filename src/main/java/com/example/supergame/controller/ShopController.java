@@ -2,7 +2,6 @@ package com.example.supergame.controller;
 
 import com.example.supergame.model.database.Inventory;
 import com.example.supergame.model.dto.Shop;
-import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
 import com.example.supergame.model.enums.WeaponCategory;
@@ -24,23 +23,23 @@ public class ShopController {
         return shopService.getShop();
     }
 
-    @PutMapping("/buy/primaryWeapon")
-    public RangeWeapon buyPrimaryWeapon() {
-        return (RangeWeapon) shopService.buyWeapon(WeaponCategory.PRIMARY);
+    @PutMapping("/{playerId}/buy/primaryWeapon/")
+    public RangeWeapon buyPrimaryWeapon(@PathVariable String playerId) {
+        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponCategory.PRIMARY);
     }
 
-    @PutMapping("/buy/secondaryWeapon")
-    public RangeWeapon buySecondaryWeapon() {
-        return (RangeWeapon) shopService.buyWeapon(WeaponCategory.SECONDARY);
+    @PutMapping("/{playerId}/buy/secondaryWeapon/")
+    public RangeWeapon buySecondaryWeapon(@PathVariable String playerId) {
+        return (RangeWeapon) shopService.buyWeapon(playerId, WeaponCategory.SECONDARY);
     }
 
-    @PutMapping("/buy/meeleWeapon")
-    public MeleeWeapon buyMeleeWeapon() {
-        return (MeleeWeapon) shopService.buyWeapon(WeaponCategory.MELEE);
+    @PutMapping("/{playerId}/buy/meeleWeapon/")
+    public MeleeWeapon buyMeleeWeapon(@PathVariable String playerId) {
+        return (MeleeWeapon) shopService.buyWeapon(playerId, WeaponCategory.MELEE);
     }
 
-    @PutMapping("/sell/")
-    public Inventory sellItem(@RequestBody Item item) {
-        return shopService.sellItem(item);
+    @PutMapping("/{playerId}/sell/{index}/")
+    public Inventory sellItem(@PathVariable String playerId, @PathVariable int index) {
+        return shopService.sellItem(playerId, index);
     }
 }

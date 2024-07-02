@@ -11,7 +11,7 @@ public class Demonblood extends Consumables {
 
     private int amount;
 
-    Demonblood(String name, double price, int selfDamage, int amount) {
+    Demonblood(String name, int price, int selfDamage, int amount) {
         super(name, price);
         this.selfDamage = selfDamage;
         this.amount = amount;
