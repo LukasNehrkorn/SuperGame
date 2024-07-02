@@ -1,9 +1,9 @@
 package com.example.supergame.model.database;
 
-import com.example.supergame.model.enums.Job;
-import com.example.supergame.model.enums.Race;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
+import com.example.supergame.model.enums.Job;
+import com.example.supergame.model.enums.Race;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 

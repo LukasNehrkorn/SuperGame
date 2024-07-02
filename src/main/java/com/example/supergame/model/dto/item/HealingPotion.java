@@ -9,7 +9,7 @@ public class HealingPotion extends Consumables {
 
     private int healing;
 
-    HealingPotion(String name, double price, int healing) {
+    HealingPotion(String name, int price, int healing) {
         super(name, price);
         this.healing = healing;
     }
