@@ -1,12 +1,12 @@
 package com.example.supergame.testdata;
 
+import com.example.supergame.model.database.*;
 import com.example.supergame.model.dto.Shop;
 import com.example.supergame.model.dto.Spell;
 import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
 import com.example.supergame.model.enums.*;
-import com.example.supergame.model.database.*;
 import lombok.Getter;
 
 import java.util.ArrayList;

@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document(collection ="Weapons")
+@Document(collection = "Weapons")
 public abstract class Weapon extends Item {
 
     private double damage;
@@ -20,7 +20,7 @@ public abstract class Weapon extends Item {
 
     private Rarity rarity;
 
-    public Weapon(String name, double price, double damage, double accuracy, WeaponCategory weaponCategory, Rarity rarity) {
+    public Weapon(String name, int price, double damage, double accuracy, WeaponCategory weaponCategory, Rarity rarity) {
         super(name, price);
         this.damage = damage;
         this.accuracy = accuracy;

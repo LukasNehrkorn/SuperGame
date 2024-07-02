@@ -1,5 +1,6 @@
 package com.example.supergame.model;
 
+import com.example.supergame.model.database.WeaponName;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
 import com.example.supergame.model.dto.item.Weapon;
@@ -14,7 +15,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WeaponFactoryTest {
     private WeaponFactory weaponFactory;
@@ -40,8 +42,8 @@ class WeaponFactoryTest {
     @Test
     void setWeaponNameForMeleeWeaponTest() {
         //given
-        List<Weapon> expectedWeaponList = new ArrayList<>();
-        Weapon expected = new MeleeWeapon("Knife", 0, 0, 0, WeaponCategory.MELEE, null, 0);
+        List<WeaponName> expectedWeaponList = new ArrayList<>();
+        WeaponName expected = new WeaponName("Knife", "MELEE");
         expectedWeaponList.add(expected);
         //when
         MeleeWeapon actually = weaponFactory.createRandomMeleeWeapon(expectedWeaponList);
@@ -52,8 +54,8 @@ class WeaponFactoryTest {
     @Test
     void setWeaponNameForSecondaryWeaponTest() {
         //given
-        List<Weapon> expectedWeaponList = new ArrayList<>();
-        Weapon expected = new MeleeWeapon("Pistol", 0, 0, 0, WeaponCategory.SECONDARY, null, 0);
+        List<WeaponName> expectedWeaponList = new ArrayList<>();
+        WeaponName expected = new WeaponName("Pistol", "PISTOL");
         expectedWeaponList.add(expected);
         //when
         RangeWeapon actually = weaponFactory.createRandomRangeSecondaryWeapon(expectedWeaponList);
@@ -64,8 +66,8 @@ class WeaponFactoryTest {
     @Test
     void setWeaponNameForPrimaryWeaponTest() {
         //given
-        List<Weapon> expectedWeaponList = new ArrayList<>();
-        Weapon expected = new MeleeWeapon("AK", 0, 0, 0, WeaponCategory.PRIMARY, null, 0);
+        List<WeaponName> expectedWeaponList = new ArrayList<>();
+        WeaponName expected = new WeaponName("AK", "ASSAULT_RIFLE");
         expectedWeaponList.add(expected);
         //when
         RangeWeapon actually = weaponFactory.createRandomRangePrimaryWeapon(expectedWeaponList);
@@ -294,7 +296,7 @@ class WeaponFactoryTest {
         //given
         val method = weaponFactory.getClass().getDeclaredMethod("setWeaponStats", Weapon.class);
         method.setAccessible(true);
-        RangeWeapon actually = new RangeWeapon("TestWeapon", 0, 0, 0, WeaponCategory.PRIMARY, Rarity.LEGENDARY, WeaponType.SNIPER, 0, 0);
+        RangeWeapon actually = new RangeWeapon("TestWeapon", 0, 0, 0, WeaponCategory.PRIMARY, Rarity.RARE, WeaponType.SNIPER, 0, 0);
         //when
         method.invoke(weaponFactory, actually);
         //then
@@ -308,7 +310,7 @@ class WeaponFactoryTest {
         //given
         val method = weaponFactory.getClass().getDeclaredMethod("setWeaponStats", Weapon.class);
         method.setAccessible(true);
-        RangeWeapon actually = new RangeWeapon("TestWeapon", 0, 0, 0, WeaponCategory.PRIMARY, Rarity.LEGENDARY, WeaponType.SNIPER, 0, 0);
+        RangeWeapon actually = new RangeWeapon("TestWeapon", 0, 0, 0, WeaponCategory.PRIMARY, Rarity.COMMON, WeaponType.SNIPER, 0, 0);
         //when
         method.invoke(weaponFactory, actually);
         //then
@@ -338,8 +340,10 @@ class WeaponFactoryTest {
         //when
         boolean actually = (boolean) method.invoke(weaponFactory, weapon);
         //then
-        assertTrue(actually);;
+        assertTrue(actually);
+        ;
     }
+
     @Test
     void increaseDamageDependingOnWeaponTypePrimaryTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
@@ -349,6 +353,7 @@ class WeaponFactoryTest {
         //when
         boolean actually = (boolean) method.invoke(weaponFactory, weapon);
         //then
-        assertTrue(actually);;
+        assertTrue(actually);
+        ;
     }
 }

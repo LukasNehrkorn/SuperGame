@@ -1,40 +1,37 @@
 package com.example.supergame.model;
 
 
+import com.example.supergame.model.database.WeaponName;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
 import com.example.supergame.model.dto.item.Weapon;
 import com.example.supergame.model.enums.Rarity;
 import com.example.supergame.model.enums.WeaponCategory;
 import com.example.supergame.model.enums.WeaponType;
-import org.testcontainers.shaded.com.google.common.annotations.VisibleForTesting;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mongodb.internal.VisibleForTesting.AccessModifier.*;
-
 public class WeaponFactory {
 
     //Selects the type of weapon
-    public Weapon createWeapon(List<Weapon> weaponList) {
+    public Weapon createWeapon(List<WeaponName> weaponNameList) {
         int weaponTypeSelector = randomizer("Rarity");
         if (weaponTypeSelector < 2) {
-            return createRandomMeleeWeapon(weaponList);
+            return createRandomMeleeWeapon(weaponNameList);
         } else if (weaponTypeSelector < 4) {
-            return createRandomRangeSecondaryWeapon(weaponList);
+            return createRandomRangeSecondaryWeapon(weaponNameList);
         } else {
-            return createRandomRangePrimaryWeapon(weaponList);
+            return createRandomRangePrimaryWeapon(weaponNameList);
         }
     }
 
     //Creates a random melee weapon
-    public MeleeWeapon createRandomMeleeWeapon(List<Weapon> weaponList) {
+    public MeleeWeapon createRandomMeleeWeapon(List<WeaponName> weaponNameList) {
         MeleeWeapon meleeWeapon = new MeleeWeapon(null, 0, 0, 100, WeaponCategory.MELEE,
                 raritySelection(randomizer("Rarity")), 0);
 
-        setWeaponName(meleeWeapon, weaponList);
+        setWeaponName(meleeWeapon, weaponNameList);
         setWeaponStats(meleeWeapon);
         increaseDamageDependingOnWeaponType(meleeWeapon);
         return meleeWeapon;
@@ -42,11 +39,11 @@ public class WeaponFactory {
 
     //Creates a random Secondary Weapon
 
-    public RangeWeapon createRandomRangeSecondaryWeapon(List<Weapon> weaponList) {
+    public RangeWeapon createRandomRangeSecondaryWeapon(List<WeaponName> weaponNameList) {
         RangeWeapon secondaryWeapon = new RangeWeapon(null, 0, 0, 0, WeaponCategory.SECONDARY,
                 raritySelection(randomizer("Rarity")), setSecondaryWeaponType(randomizer("Secondary")), 0, 0);
 
-        setWeaponName(secondaryWeapon, weaponList);
+        setWeaponName(secondaryWeapon, weaponNameList);
         setAmmunition(secondaryWeapon);
         setWeaponStats(secondaryWeapon);
         increaseDamageDependingOnWeaponType(secondaryWeapon);
@@ -54,10 +51,10 @@ public class WeaponFactory {
     }
     //Creates a random Primary Weapon
 
-    public RangeWeapon createRandomRangePrimaryWeapon(List<Weapon> weaponList) {
+    public RangeWeapon createRandomRangePrimaryWeapon(List<WeaponName> weaponNameList) {
         RangeWeapon primaryWeapon = new RangeWeapon(null, 0, 0, 0, WeaponCategory.PRIMARY,
                 raritySelection(randomizer("Rarity")), setTypeForPrimaryWeapon(randomizer("Primary")), 0, 0);
-        setWeaponName(primaryWeapon, weaponList);
+        setWeaponName(primaryWeapon, weaponNameList);
         setAmmunition(primaryWeapon);
         setWeaponStats(primaryWeapon);
         increaseDamageDependingOnWeaponType(primaryWeapon);
@@ -66,24 +63,29 @@ public class WeaponFactory {
 
     private int randomizer(String kind) {
         switch (kind) {
-            case "Rarity" : return  (int) (Math.random() * ((100 + 1)));
-            case "Type" : return (int) (Math.random() * ((5 + 1)));
-            case "Secondary" : return (int) (Math.random() * ((3)) + 1);
-            case "Primary" : return (int) (Math.random() * ((4)) + 1);
-            default: return 0;
+            case "Rarity":
+                return (int) (Math.random() * ((100 + 1)));
+            case "Type":
+                return (int) (Math.random() * ((5 + 1)));
+            case "Secondary":
+                return (int) (Math.random() * ((3)) + 1);
+            case "Primary":
+                return (int) (Math.random() * ((4)) + 1);
+            default:
+                return 0;
         }
     }
 
     //Set a Name for the Weapon
-    private void setWeaponName(Weapon weapon, List<Weapon> weaponList) {
-        List<String> weaponNames = new ArrayList<>();
-            for (Weapon weaponFromDB : weaponList) {
-                if (weaponFromDB.getWeaponCategory().equals(weapon.getWeaponCategory())) {
-                    weaponNames.add(weaponFromDB.getName());
-                }
+    private void setWeaponName(Weapon weapon, List<WeaponName> weaponNames) {
+        List<String> actualWeaponNames = new ArrayList<>();
+        for (WeaponName weaponName : weaponNames) {
+            if (weaponName.getWeaponType().equals(weapon.getWeaponCategory().toString())) {
+                actualWeaponNames.add(weaponName.getName());
             }
+        }
         int namePickNumber = (int) (Math.random() * (weaponNames.size()));
-        weapon.setName(weaponNames.get(namePickNumber));
+        weapon.setName(weaponNames.get(namePickNumber).getName());
     }
 
 
@@ -160,19 +162,20 @@ public class WeaponFactory {
         if (weapon.getRarity().equals(Rarity.LEGENDARY)) {
             weapon.setDamage((Math.random() * ((20 + 12))));
             weapon.setAccuracy((Math.random() * ((95 + 75) + 75)));
-            weapon.setPrice((Math.random() * ((350 + 200) + 200)));
+            weapon.setPrice((int) (Math.random() * ((350 + 200) + 200)));
         } else if (weapon.getRarity().equals(Rarity.RARE)) {
             weapon.setDamage((Math.random() * ((11 + 6) + 1)));
             weapon.setAccuracy((Math.random() * ((69 + 45) + 1)));
-            weapon.setPrice((Math.random() * ((150 + 50) + 1)));
+            weapon.setPrice((int) (Math.random() * ((150 + 50) + 1)));
         } else {
             weapon.setDamage((Math.random() * ((5 + 3) + 1)));
             weapon.setAccuracy((Math.random() * ((54 + 20) + 1)));
-            weapon.setPrice((Math.random() * ((50 + 30) + 1)));
+            weapon.setPrice((int) (Math.random() * ((50 + 30) + 1)));
         }
     }
 
     //Gives a damage increase depending on the weapon type
+
     /**
      * This Method increases the Damage of a Weapon depending on the Weapon Type
      *
