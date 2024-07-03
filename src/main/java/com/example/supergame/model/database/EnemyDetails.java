@@ -21,6 +21,4 @@ public class EnemyDetails {
     private int accuracy;
 
     private int money;
-
-    private boolean isBoss;
 }
