@@ -1,15 +1,17 @@
 package com.example.supergame.model.database;
 
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "weapons")
-@Getter
-@Builder
+@Document(collection = "enemyNames")
 @AllArgsConstructor
-public class WeaponName {
+public class EnemyName {
+
+    @Id
+    private String id;
+
     private String name;
-    private String weaponType;
+
+    private String enemyType;
 }

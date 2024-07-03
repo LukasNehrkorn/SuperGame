@@ -1,22 +1,43 @@
 package com.example.supergame.model.dto;
 
-import com.example.supergame.model.database.MissionInventory;
+import com.example.supergame.model.database.EnemyDetails;
+import com.example.supergame.model.database.EnemyName;
+import com.example.supergame.model.dto.item.Weapon;
+import com.example.supergame.model.enums.EnemyType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class Enemy {
+@AllArgsConstructor
+@Builder
+public class Enemy {
 
-    protected int name;
+    @Id
+    private String id;
 
-    protected int maxHp;
+    private String name;
 
-    protected int currentHp;
+    private EnemyType enemyType;
 
-    protected int damage;
+    private Weapon weapon;
 
-    protected int accuracy;
+    private int maxHp;
 
-    protected MissionInventory missionInventory;
+    private int currentHp;
+
+    private int accuracy;
+
+    private int money;
+
+    public EnemyName toEnemyName() {
+        return new EnemyName(id, name, enemyType.toString());
+    }
+
+    public EnemyDetails toEnemyDetails() {
+        return new EnemyDetails(id, weapon, maxHp, currentHp, accuracy, money);
+    }
 }

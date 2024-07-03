@@ -29,7 +29,7 @@ public class WeaponFactory {
     //Creates a random melee weapon
     public MeleeWeapon createRandomMeleeWeapon(List<WeaponName> weaponNameList) {
         MeleeWeapon meleeWeapon = new MeleeWeapon(null, 0, 0, 100, WeaponCategory.MELEE,
-                raritySelection(randomizer("Rarity")), 0);
+                raritySelection(randomizer("Rarity")), 1);
 
         setWeaponName(meleeWeapon, weaponNameList);
         setWeaponStats(meleeWeapon);
