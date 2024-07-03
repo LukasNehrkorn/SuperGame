@@ -1,5 +1,6 @@
 package com.example.supergame.service;
 
+import com.example.supergame.model.database.Inventory;
 import com.example.supergame.model.database.Player;
 import com.example.supergame.model.database.SpellDetails;
 import com.example.supergame.model.database.SpellName;
@@ -105,7 +106,29 @@ class PlayerServiceTest {
     }
 
     @Test
-    void getSpells() {
+    void buyItemTest() {
+        Player expectedPlayer = testDataFactory.getPlayer();
+        when(playerRepository.findById(expectedPlayer.getId())).thenReturn(Optional.of(expectedPlayer));
+        when(playerRepository.save(Mockito.any(Player.class))).thenReturn(expectedPlayer);
+
+        Inventory actualInventory = service.buyItem(expectedPlayer.getId(), testDataFactory.getMeleeWeapon());
+
+        assertEquals(actualInventory.getItems().size(), 4);
+    }
+
+    @Test
+    void sellItemTest() {
+        Player expectedPlayer = testDataFactory.getPlayer();
+        when(playerRepository.findById(expectedPlayer.getId())).thenReturn(Optional.of(expectedPlayer));
+        when(playerRepository.save(Mockito.any(Player.class))).thenReturn(expectedPlayer);
+
+        Inventory actualInventory = service.sellItem(expectedPlayer.getId(), 0);
+
+        assertEquals(actualInventory.getItems().size(), 2);
+    }
+
+    @Test
+    void getSpellsTest() {
         Player expectedPlayer = testDataFactory.getPlayer();
         SpellName expectedSpellName = testDataFactory.getSpellName();
         SpellDetails expectedSpellDetails = testDataFactory.getSpellDetails();
