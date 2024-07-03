@@ -34,6 +34,15 @@ public class PlayerService {
     }
 
     // ---- PLAYER INFO ----
+    public List<PlayerInfo> getAllPlayerInfos() {
+        List<Player> players = playerRepository.findAll();
+        List<PlayerInfo> playerInfos = new ArrayList<>();
+        for (Player player : players) {
+            playerInfos.add(player.getPlayerInfo());
+        }
+        return playerInfos;
+    }
+
     public PlayerInfo getPlayerInfo(String id) {
         return playerRepository.findById(id).get().getPlayerInfo();
     }

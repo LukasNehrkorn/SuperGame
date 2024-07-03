@@ -18,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,22 @@ class PlayerServiceTest {
     private PlayerService service;
 
     private final TestDataFactory testDataFactory = new TestDataFactory();
+
+    @Test
+    void getAllPlayerInfosTest() {
+        List<Player> expectedPlayers = new ArrayList<>();
+        expectedPlayers.add(testDataFactory.getPlayer());
+        expectedPlayers.add(testDataFactory.getPlayer());
+        expectedPlayers.add(testDataFactory.getPlayer());
+        when(playerRepository.findAll()).thenReturn(expectedPlayers);
+
+        List<PlayerInfo> actualPlayerInfos = service.getAllPlayerInfos();
+
+        assertEquals(expectedPlayers.size(), actualPlayerInfos.size());
+        for (int i = 0; i < expectedPlayers.size(); i++) {
+            assertEquals(expectedPlayers.get(i).getPlayerInfo(), actualPlayerInfos.get(i));
+        }
+    }
 
     @Test
     void getPlayerInfo() {

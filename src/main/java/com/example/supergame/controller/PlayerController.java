@@ -23,6 +23,11 @@ public class PlayerController {
     }
 
     // ---- PLAYER INFO ----
+    @GetMapping("/allPlayers")
+    public List<PlayerInfo> getAllPlayers() {
+        return playerService.getAllPlayerInfos();
+    }
+
     @GetMapping("/{id}")
     public PlayerInfo getPlayerInfo(@PathVariable String id) {
         return playerService.getPlayerInfo(id);
