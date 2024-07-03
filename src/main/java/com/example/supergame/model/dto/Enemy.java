@@ -33,11 +33,13 @@ public class Enemy {
 
     private int money;
 
+    private boolean isBoss;
+
     public EnemyName toEnemyName() {
         return new EnemyName(id, name, enemyType.toString());
     }
 
     public EnemyDetails toEnemyDetails() {
-        return new EnemyDetails(id, weapon, maxHp, currentHp, accuracy, money);
+        return new EnemyDetails(id, weapon, maxHp, currentHp, accuracy, money, isBoss);
     }
 }
