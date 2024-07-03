@@ -1,11 +1,13 @@
 package com.example.supergame.service;
 
+import com.example.supergame.model.database.Inventory;
 import com.example.supergame.model.database.Player;
 import com.example.supergame.model.database.SpellDetails;
 import com.example.supergame.model.database.SpellName;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import com.example.supergame.model.dto.Spell;
+import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.enums.Job;
 import com.example.supergame.model.enums.Race;
 import com.example.supergame.repository.player.PlayerRepository;
@@ -50,6 +52,34 @@ public class PlayerService {
 
     public void deletePlayer(String id) {
         playerRepository.deleteById(id);
+    }
+
+    // ---- PLAYER INVENTORY ----
+    public Inventory buyItem(String id, Item item) {
+        Player player = playerRepository.findById(id).get();
+        Inventory inventory = player.getInventory();
+
+        if (item.getPrice() > inventory.getMoney()) throw new RuntimeException("Price exceeds players funds!");
+        inventory.setMoney(inventory.getMoney() - item.getPrice());
+
+        inventory.getItems().add(item);
+        return playerRepository.save(player).getInventory();
+    }
+
+    public Inventory sellItem(String id, int index) {
+        Player player = playerRepository.findById(id).get();
+        Inventory inventory = player.getInventory();
+
+        List<Item> items = inventory.getItems();
+        Item item = items.get(index);
+
+        int price = item.getPrice() / 5;
+        int currentMoney = inventory.getMoney();
+        inventory.setMoney(currentMoney + price);
+
+        items.remove(item);
+
+        return playerRepository.save(player).getInventory();
     }
 
     // ---- PLAYER STATUS ----
