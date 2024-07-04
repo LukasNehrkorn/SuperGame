@@ -1,15 +1,10 @@
 package com.example.supergame.service;
 
 import com.example.supergame.model.WeaponFactory;
-import com.example.supergame.model.database.Inventory;
-import com.example.supergame.model.database.Player;
 import com.example.supergame.model.database.WeaponName;
 import com.example.supergame.model.dto.Shop;
-import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.model.dto.item.MeleeWeapon;
 import com.example.supergame.model.dto.item.RangeWeapon;
-import com.example.supergame.model.dto.item.Weapon;
-import com.example.supergame.model.enums.WeaponCategory;
 import com.example.supergame.repository.items.WeaponNamesRepository;
 import com.example.supergame.repository.player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

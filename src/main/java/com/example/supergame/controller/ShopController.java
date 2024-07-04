@@ -1,12 +1,10 @@
 package com.example.supergame.controller;
 
-import com.example.supergame.model.database.Inventory;
 import com.example.supergame.model.dto.Shop;
-import com.example.supergame.model.dto.item.MeleeWeapon;
-import com.example.supergame.model.dto.item.RangeWeapon;
-import com.example.supergame.model.enums.WeaponCategory;
 import com.example.supergame.service.ShopService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/shop")

@@ -28,19 +28,15 @@ import static org.mockito.Mockito.when;
 @ExtendWith(SpringExtension.class)
 class PlayerServiceTest {
 
+    private final TestDataFactory testDataFactory = new TestDataFactory();
     @Mock
     private PlayerRepository playerRepository;
-
     @Mock
     private SpellNameRepository spellNameRepository;
-
     @Mock
     private SpellDetailsRepository spellDetailsRepository;
-
     @InjectMocks
     private PlayerService service;
-
-    private final TestDataFactory testDataFactory = new TestDataFactory();
 
     @Test
     void getAllPlayerInfosTest() {
