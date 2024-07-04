@@ -13,5 +13,5 @@ public class PlayerInfo {
     private String name;
     private String race;
     private String job;
-
+    private String desktopName;
 }

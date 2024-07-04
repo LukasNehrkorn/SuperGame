@@ -1,11 +1,13 @@
 package com.example.supergame.controller;
 
 import com.example.supergame.model.database.Inventory;
+import com.example.supergame.model.database.Player;
 import com.example.supergame.model.dto.PlayerInfo;
 import com.example.supergame.model.dto.PlayerStatus;
 import com.example.supergame.model.dto.Spell;
 import com.example.supergame.model.dto.item.Item;
 import com.example.supergame.service.PlayerService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +25,9 @@ public class PlayerController {
     }
 
     // ---- PLAYER INFO ----
-    @GetMapping("/allPlayers")
-    public List<PlayerInfo> getAllPlayers() {
-        return playerService.getAllPlayerInfos();
+    @RequestMapping(value = "/savegames/{desktopName}")
+    public List<PlayerInfo> getSavegames(@PathVariable String desktopName) {
+        return playerService.getAllSavegamesByDesktopName(desktopName);
     }
 
     @GetMapping("/{id}")

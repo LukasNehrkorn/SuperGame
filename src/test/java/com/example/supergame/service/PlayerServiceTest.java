@@ -20,6 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,7 +47,7 @@ class PlayerServiceTest {
         expectedPlayers.add(testDataFactory.getPlayer());
         when(playerRepository.findAll()).thenReturn(expectedPlayers);
 
-        List<PlayerInfo> actualPlayerInfos = service.getAllPlayerInfos();
+        List<PlayerInfo> actualPlayerInfos = service.getAllSavegamesByDesktopName(expectedPlayers.get(0).getDesktopName());
 
         assertEquals(expectedPlayers.size(), actualPlayerInfos.size());
         for (int i = 0; i < expectedPlayers.size(); i++) {

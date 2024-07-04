@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PlayerService {
@@ -34,11 +35,11 @@ public class PlayerService {
     }
 
     // ---- PLAYER INFO ----
-    public List<PlayerInfo> getAllPlayerInfos() {
+    public List<PlayerInfo> getAllSavegamesByDesktopName(String desktopName) {
         List<Player> players = playerRepository.findAll();
         List<PlayerInfo> playerInfos = new ArrayList<>();
         for (Player player : players) {
-            playerInfos.add(player.getPlayerInfo());
+            if (Objects.equals(player.getDesktopName(), desktopName)) playerInfos.add(player.getPlayerInfo());
         }
         return playerInfos;
     }

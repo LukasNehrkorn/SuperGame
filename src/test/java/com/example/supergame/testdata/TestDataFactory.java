@@ -39,6 +39,7 @@ public class TestDataFactory {
         return Player.builder()
                 .id("667c0f650666f16dac81f91b")
                 .name("Lukas")
+                .desktopName("DESKTOP-KG7QN3H")
                 .race(Race.HUMAN)
                 .job(Job.MEDIC)
                 .maxHp(100)

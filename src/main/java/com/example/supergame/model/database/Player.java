@@ -19,6 +19,8 @@ public class Player {
 
     private String id;
 
+    private String desktopName;
+
     private String name;
 
     private Race race;
@@ -41,24 +43,11 @@ public class Player {
 
     private MissionInventory missionInventory;
 
-    public Player(String name, Race race, Job job) {
-        this.name = name;
-        this.race = race;
-        this.job = job;
-        this.maxHp = 100;
-        this.currentHp = maxHp;
-        this.maxDemonBlood = 100;
-        this.currentDemonBlood = maxDemonBlood;
-        this.accuracy = 100;
-        this.inventory = new Inventory();
-        this.spells = null;
-        this.missionInventory = null;
-    }
-
     public Player(PlayerInfo info) {
         this.name = info.getName();
         this.race = Race.valueOf(info.getRace());
         this.job = Job.valueOf(info.getJob());
+        this.desktopName = info.getDesktopName();
         this.maxHp = 100;
         this.currentHp = maxHp;
         this.maxDemonBlood = 100;
@@ -70,7 +59,7 @@ public class Player {
     }
 
     public PlayerInfo getPlayerInfo() {
-        return new PlayerInfo(id, name, race.toString(), job.toString());
+        return new PlayerInfo(id, name, race.toString(), job.toString(), desktopName);
     }
 
     public PlayerStatus getPlayerStatus() {
